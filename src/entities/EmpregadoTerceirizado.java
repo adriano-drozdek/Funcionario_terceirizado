@@ -21,4 +21,9 @@ public class EmpregadoTerceirizado extends Empregado {
 		this.despesaAdicional = despesaAdicional;
 	}
 
+	@Override
+	public double pagamento() {
+		return super.pagamento() + despesaAdicional * 1.1;
+	}
+
 }
