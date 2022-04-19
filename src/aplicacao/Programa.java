@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Empregado;
+import entities.EmpregadoTerceirizado;
 
 public class Programa {
 
@@ -30,6 +31,13 @@ public class Programa {
 			int horas = sc.nextInt();
 			System.out.println("Valor por hora: ");
 			double valorHoras = sc.nextDouble();
+			if (ch == 'y') {
+				System.out.println("Despesa adicional: ");
+				double addDespAdicional = sc.nextDouble();
+				list.add(new EmpregadoTerceirizado(nome, horas, valorHoras, addDespAdicional));
+			} else {
+				list.add(new Empregado(nome, horas, valorHoras));
+			}
 
 		}
 		sc.close();
