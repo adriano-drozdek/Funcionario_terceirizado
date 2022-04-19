@@ -17,29 +17,35 @@ public class Programa {
 
 		List<Empregado> list = new ArrayList<>();
 
-		System.out.println("Entre com o número de trabalhadores");
+		System.out.print("Entre com o número de trabalhadores: ");
 		int N = sc.nextInt();
 
 		for (int i = 1; i <= N; i++) {
 			System.out.println("Funcionário #" + i);
-			System.out.println("Terceirizado? (S/N) ");
+			System.out.print("Terceirizado? (s/n) ");
 			char ch = sc.next().charAt(0);
-			System.out.println("Nome");
+			System.out.print("Nome: ");
 			sc.nextLine();
 			String nome = sc.nextLine();
-			System.out.println("Quantidade de horas: ");
+			System.out.print("Quantidade de horas: ");
 			int horas = sc.nextInt();
-			System.out.println("Valor por hora: ");
+			System.out.print("Valor por hora: ");
 			double valorHoras = sc.nextDouble();
-			if (ch == 'y') {
-				System.out.println("Despesa adicional: ");
+			if (ch == 's') {
+				System.out.print("Despesa adicional: ");
 				double addDespAdicional = sc.nextDouble();
 				list.add(new EmpregadoTerceirizado(nome, horas, valorHoras, addDespAdicional));
 			} else {
 				list.add(new Empregado(nome, horas, valorHoras));
 			}
-
 		}
+
+		System.out.println();
+		System.out.println("Pagamentos: ");
+		for (Empregado emp : list) {
+			System.out.println(emp.getNome() + " - $ " + String.format("%.2f", emp.pagamento()));
+		}
+
 		sc.close();
 	}
 
